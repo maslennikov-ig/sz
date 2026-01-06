@@ -2,6 +2,18 @@
 
 User-facing release notes for all versions.
 
+## v0.3.1
+
+_Released on 2026-01-06_
+
+### 🐛 Bug Fixes
+
+- **components/Hero.tsx**: Update 2 source file(s)
+
+---
+
+_This release was automatically generated from 1 commits._
+
 ## v0.3.0
 
 _Released on 2026-01-06_
