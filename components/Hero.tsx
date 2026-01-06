@@ -46,7 +46,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
       </div>
       
       {/* Texture Noise Overlay */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,...')] z-10 pointer-events-none opacity-20 mix-blend-soft-light"></div>
+      <div className="absolute inset-0 bg-[image:var(--background-image-noise)] z-10 pointer-events-none opacity-20 mix-blend-soft-light"></div>
 
       <div className="relative z-20 max-w-7xl mx-auto px-6 w-full grid md:grid-cols-2 gap-12 items-center">
         {/* Left Content */}
