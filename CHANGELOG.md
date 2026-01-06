@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-01-06
+
+### Added
+- **postcss.config.js**: add 1 source file(s), update 3 source file(s) (490c6b0)
+
 ## [0.2.0] - 2026-01-06
 
 ### Added
