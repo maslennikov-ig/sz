@@ -2,6 +2,7 @@ import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import { Button } from './Button';
 import { IMAGES } from '../constants';
+import { FadeIn } from './FadeIn';
 
 interface HeroProps {
   onOpenModal: () => void;
@@ -45,9 +46,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
       </div>
       
       {/* Texture Noise Overlay */}
-      <div className="absolute inset-0 bg-noise z-10 pointer-events-none opacity-20 mix-blend-soft-light"></div>
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,...')] z-10 pointer-events-none opacity-20 mix-blend-soft-light"></div>
 
       <div className="relative z-20 max-w-7xl mx-auto px-6 w-full grid md:grid-cols-2 gap-12 items-center">
+        {/* Left Content */}
         <motion.div 
           className="space-y-8"
           variants={containerVariants}
@@ -81,6 +83,46 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
             </div>
           </motion.div>
         </motion.div>
+
+        {/* Right Content - Offset Layers Photo */}
+        <div className="hidden md:flex items-center justify-center p-8">
+            <FadeIn direction="left" delay={0.4} className="relative w-[350px] h-[450px]">
+                {/* Back Layer (Solid Gold) */}
+                <motion.div 
+                    initial={{ rotate: 0, opacity: 0 }} 
+                    whileInView={{ rotate: -3, opacity: 1 }}
+                    transition={{ duration: 1, delay: 0.5 }}
+                    viewport={{ once: true }}
+                    className="absolute inset-0 bg-gold/10 rounded-sm"
+                ></motion.div>
+                
+                {/* Back Layer (Outline) */}
+                <motion.div 
+                    initial={{ rotate: 0, opacity: 0 }} 
+                    whileInView={{ rotate: 6, opacity: 1 }}
+                    transition={{ duration: 1, delay: 0.7 }}
+                    viewport={{ once: true }}
+                    className="absolute inset-0 border border-white/20 rounded-sm"
+                ></motion.div>
+
+                {/* Main Image */}
+                <motion.div 
+                   className="absolute inset-0 bg-graphite overflow-hidden shadow-2xl rounded-sm"
+                   initial={{ scale: 0.95, opacity: 0 }}
+                   whileInView={{ scale: 1, opacity: 1 }}
+                   transition={{ duration: 0.8 }}
+                   viewport={{ once: true }}
+                >
+                    <img 
+                        src={IMAGES.bio} 
+                        alt="Alexander Zhigiliy"
+                        className="object-cover object-top w-full h-full grayscale hover:grayscale-0 transition-all duration-700"
+                    />
+                    {/* Inner shadow/gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-deepBlack/40 to-transparent pointer-events-none"></div>
+                </motion.div>
+            </FadeIn>
+        </div>
       </div>
       
       {/* Scroll indicator */}

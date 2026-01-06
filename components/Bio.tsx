@@ -1,7 +1,6 @@
 import React from 'react';
 import { Quote } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { IMAGES } from '../constants';
 import { FadeIn } from './FadeIn';
 
 export const Bio: React.FC = () => {
@@ -14,7 +13,7 @@ export const Bio: React.FC = () => {
           <div className="relative">
             <div className="aspect-[4/5] relative overflow-hidden bg-graphite rounded-sm shadow-2xl border border-white/5">
               <motion.img 
-                src={IMAGES.bio} 
+                src="/alexander.jpg" 
                 alt="Александр Жигилий" 
                 className="object-cover w-full h-full"
                 whileHover={{ scale: 1.05, transition: { duration: 0.7 } }}
