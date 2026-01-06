@@ -1,9 +1,13 @@
 import React from 'react';
-import { Download, FileText } from 'lucide-react';
+import { ExternalLink, BookOpen } from 'lucide-react';
 import { FadeIn } from './FadeIn';
 import { Button } from './Button';
 
 export const LeadMagnet: React.FC = () => {
+  const handleOpen = () => {
+    window.open('/checklist.html', '_blank');
+  };
+
   return (
     <section className="py-24 bg-deepBlack">
       <div className="max-w-5xl mx-auto px-6">
@@ -15,7 +19,7 @@ export const LeadMagnet: React.FC = () => {
             <div className="relative z-10 flex flex-col md:flex-row items-center gap-8 md:gap-12">
               {/* Icon / Visual */}
               <div className="w-24 h-24 bg-white/5 rounded-full flex items-center justify-center border border-white/10 shrink-0">
-                <FileText size={40} className="text-gold" />
+                <BookOpen size={40} className="text-gold" />
               </div>
 
               {/* Text */}
@@ -24,20 +28,20 @@ export const LeadMagnet: React.FC = () => {
                   Бесплатно
                 </div>
                 <h3 className="text-2xl md:text-3xl font-serif text-ivory mb-2">
-                  Чек-лист: «Готовность к Club 500»
+                  Гайд: «Путь в Club 500»
                 </h3>
                 <p className="text-white/60 font-light">
-                  Проверьте свой бизнес по 10 критериям и узнайте, как пройти отбор в закрытое сообщество лидеров.
+                  Подробный разбор критериев, этапов отбора и советы по вступлению в крупнейшее сообщество предпринимателей.
                 </p>
               </div>
 
               {/* CTA */}
-              <div className="shrink-0">
-                <Button className="flex items-center gap-2 pl-6 pr-8">
-                  <Download size={18} />
-                  <span>Скачать PDF</span>
+              <div className="shrink-0 text-center">
+                <Button onClick={handleOpen} className="flex items-center gap-2 pl-6 pr-8">
+                  <ExternalLink size={18} />
+                  <span>Открыть гайд</span>
                 </Button>
-                <p className="text-white/20 text-[10px] text-center mt-2">PDF, 2.4 MB</p>
+                <p className="text-white/20 text-[10px] mt-2 italic uppercase tracking-widest">Digital Format</p>
               </div>
             </div>
           </div>

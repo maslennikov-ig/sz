@@ -1,64 +1,56 @@
-# Implementation Plan: Enhancing Alexander Zhigiliy's Website
+# Implementation Plan: Ecosystem Expansion
+
+**Goal:** Transform the landing page into a comprehensive personal brand platform with advanced interactive features and multiple revenue streams.
 
 ## Orchestrator: Gemini CLI (AI Agent)
 ## Current Date: January 7, 2026
 
 ---
 
-### Phase 1: Content & Social Proof Integration
+### Phase 5: Business Expansion (Services & Map)
 
-*   **Task 1.1: Implement "Media Hub" (Ecosystem Block)**
-    *   **Objective:** Create a section showcasing Alexander's Telegram channel and YouTube presence.
-    *   **Design:** Clean, minimalist, premium. Use `FadeIn` animation. Mockup of a device (e.g., iPhone frame) displaying social feeds.
-    *   **Content:** Placeholder text for Telegram channel name ("AZ\_networking") and YouTube channel. Use existing `IMAGES.hero` or a neutral background.
-    *   **File:** New component `components/MediaHub.tsx`.
-    *   **Integration:** Add to `App.tsx` main section.
-    *   **Status:** Not started.
+*   **Task 5.1: Implement "Services" Block (Formats of Work)**
+    *   **Objective:** Monetize B2B and consulting requests.
+    *   **Components:** 3 Cards (Speaker, Strategy, Corporate).
+    *   **Design:** Premium cards with hover effects.
+    *   **File:** `components/Services.tsx`.
+    *   **Integration:** Add to `App.tsx` (after Bio).
+    *   **Status:** In Progress.
 
-*   **Task 1.2: Implement "Social Proof" (Client Logos Block)**
-    *   **Objective:** Display logos of client companies to build trust.
-    *   **Design:** A row of grayscale logos that perhaps colorize on hover. Simple, elegant.
-    *   **Content:** Placeholder logos (e.g., generic squares with "Client A", "Client B"). Actual logos would require client assets.
-    *   **File:** New component `components/SocialProof.tsx`.
-    *   **Integration:** Add to `App.tsx` main section.
-    *   **Status:** Not started.
+*   **Task 5.2: Implement "Networking Map" (Interactive Geography)**
+    *   **Objective:** Visualize global connections (Dubai, Moscow, etc.).
+    *   **Design:** SVG Map with pulsing dots.
+    *   **File:** `components/NetworkingMap.tsx`.
+    *   **Integration:** Add to `App.tsx` (near Bio or Social Proof).
+    *   **Status:** Not Started.
 
----
+### Phase 6: Advanced Lead Gen (Quiz & Testimonials)
 
-### Phase 2: Lead Generation & Conversion
+*   **Task 6.1: Implement "Smart Quiz" (Qualification)**
+    *   **Objective:** Replace/Enhance the modal with a multi-step form.
+    *   **Logic:** Step 1 (Revenue), Step 2 (Goal), Step 3 (Contacts).
+    *   **File:** `components/QuizModal.tsx`.
+    *   **Integration:** Replace current modal logic.
+    *   **Status:** Not Started.
 
-*   **Task 2.1: Implement "Lead Magnet" (Gaid Download Block)**
-    *   **Objective:** Offer a free guide to capture leads.
-    *   **Design:** A distinct section with a title ("Скачайте бесплатный гайд"), a brief description, and a prominent CTA button. Consistent with "Quiet Luxury" theme.
-    *   **Content:** Placeholder text for guide title/description. CTA button will link to a placeholder URL or prompt download.
-    *   **File:** New component `components/LeadMagnet.tsx`.
-    *   **Integration:** Add to `App.tsx` main section, likely before the Footer.
-    *   **Status:** Not started.
+*   **Task 6.2: Implement "Dynamic Testimonials" (Voice/Video)**
+    *   **Objective:** High-trust social proof.
+    *   **Design:** Telegram-style audio/video bubbles.
+    *   **File:** `components/Testimonials.tsx`.
+    *   **Integration:** Add to `App.tsx` (before Pricing).
+    *   **Status:** Not Started.
 
----
+### Phase 7: Content Marketing
 
-### Phase 3: Enhancing Personal Brand Narrative
+*   **Task 7.1: Implement "Knowledge Base" (Insights)**
+    *   **Objective:** SEO traffic and expertise demonstration.
+    *   **Design:** Grid of articles/podcasts with tags.
+    *   **File:** `components/KnowledgeBase.tsx`.
+    *   **Integration:** Add to `App.tsx` (near MediaHub).
+    *   **Status:** Not Started.
 
-*   **Task 3.1: Enhance "Bio" Section with Timeline**
-    *   **Objective:** Add a visual timeline of Alexander's career.
-    *   **Design:** Vertical timeline structure. Use `framer-motion` for staggered animations of timeline points. Align with existing premium aesthetic.
-    *   **Content:** Utilize data from `TIMELINE` in `constants.ts` or create new relevant data points.
-    *   **File:** Modify `components/Bio.tsx`.
-    *   **Status:** Not started.
+### Phase 8: Final Polish & Release
 
----
-
-### Phase 4: Consistency & Finalization
-
-*   **Task 4.1: Code Review & Refinement**
-    *   Ensure all new components adhere to the established color palette, fonts, and spacing.
-    *   Apply `FadeIn` animations consistently.
-    *   Verify mobile responsiveness for all new sections.
-    *   **File:** All relevant files (`App.tsx`, `components/*.tsx`, `constants.ts`).
-    *   **Status:** Not started.
-
-*   **Task 4.2: Release**
-    *   Commit all changes to Git.
-    *   Run the release automation script.
-    *   **Command:** `bash .claude/scripts/release.sh --yes`
-    *   **Status:** Not started.
+*   **Task 8.1: Global Consistency Check**
+    *   Ensure all new blocks match the "Quiet Luxury" design system.
+*   **Task 8.2: Release v0.5.0**
