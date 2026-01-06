@@ -9,6 +9,9 @@ import { Pricing } from './components/Pricing';
 import { FAQ } from './components/FAQ';
 import { Footer } from './components/Footer';
 import { RegistrationModal } from './components/RegistrationModal';
+import { MediaHub } from './components/MediaHub';
+import { SocialProof } from './components/SocialProof';
+import { LeadMagnet } from './components/LeadMagnet';
 
 const App: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,12 +28,15 @@ const App: React.FC = () => {
       
       <main>
         <Hero onOpenModal={() => handleOpenModal('standard')} />
+        <SocialProof />
         <Problems />
         <Bio />
+        <MediaHub />
         <Methodology />
         <Program />
         <Pricing onSelectTariff={handleOpenModal} />
         <FAQ />
+        <LeadMagnet />
       </main>
 
       <Footer />

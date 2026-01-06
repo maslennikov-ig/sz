@@ -78,7 +78,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
               Забронировать место
             </Button>
             <div className="text-sm font-sans text-white/60 tracking-wide border-l border-white/20 pl-4">
-              <span className="block text-ivory font-medium">25 Октября | 17:00</span>
+              <span className="block text-ivory font-medium">25 Февраля | 17:00</span>
               <span className="block">Four Seasons Hotel, Moscow</span>
             </div>
           </motion.div>
