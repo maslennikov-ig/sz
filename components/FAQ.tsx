@@ -1,68 +1,53 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 import { Plus, Minus } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { FAQS } from '../constants';
-
-const MotionSection = motion.section as any;
-const MotionDiv = motion.div as any;
-const MotionH2 = motion.h2 as any;
+import { FadeIn } from './FadeIn';
 
 export const FAQ: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <MotionSection 
-      className="py-24 bg-deepBlack"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-    >
+    <section className="py-24 bg-deepBlack text-ivory">
       <div className="max-w-3xl mx-auto px-6">
-        <MotionH2 
-          className="text-3xl font-serif text-ivory text-center mb-12"
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-          }}
-        >
-          FAQ
-        </MotionH2>
+        <FadeIn className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-serif">Частые вопросы</h2>
+        </FadeIn>
 
-        <div className="space-y-2">
-          {FAQS.map((faq, index) => {
-            const isOpen = openIndex === index;
-            return (
-              <MotionDiv 
-                key={index} 
-                className="border-b border-white/10"
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: index * 0.1 } }
-                }}
-              >
-                <button 
-                  className="w-full py-6 flex items-center justify-between text-left group"
-                  onClick={() => setOpenIndex(isOpen ? null : index)}
+        <div className="space-y-4">
+          {FAQS.map((faq, index) => (
+            <FadeIn key={index} delay={index * 0.1}>
+              <div className="border border-white/10 bg-white/5 overflow-hidden">
+                <button
+                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                  className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
                 >
-                  <span className={`font-medium transition-colors ${isOpen ? 'text-gold' : 'text-ivory group-hover:text-gold/80'}`}>
-                    {faq.question}
-                  </span>
-                  <span className={`transition-colors ${isOpen ? 'text-gold' : 'text-white/30'}`}>
-                    {isOpen ? <Minus size={20} /> : <Plus size={20} />}
-                  </span>
+                  <span className="font-medium pr-8">{faq.question}</span>
+                  {openIndex === index ? (
+                    <Minus className="text-gold flex-shrink-0" />
+                  ) : (
+                    <Plus className="text-white/30 flex-shrink-0" />
+                  )}
                 </button>
-                <div 
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-40 opacity-100 mb-6' : 'max-h-0 opacity-0'}`}
-                >
-                  <p className="text-white/60 font-light leading-relaxed">
-                    {faq.answer}
-                  </p>
-                </div>
-              </MotionDiv>
-            );
-          })}
+                <AnimatePresence>
+                  {openIndex === index && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <div className="p-6 pt-0 text-white/60 font-light leading-relaxed">
+                        {faq.answer}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </FadeIn>
+          ))}
         </div>
       </div>
-    </MotionSection>
+    </section>
   );
 };

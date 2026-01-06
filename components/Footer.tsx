@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { LegalModal } from './LegalModal';
+import { PRIVACY_POLICY, OFFER_AGREEMENT } from '../legalText';
 
+// Using direct motion component to avoid 'as any' if possible, or keeping it if environment requires.
+// Given previous context, sticking to a clean implementation.
 const MotionFooter = motion.footer as any;
 
 export const Footer: React.FC = () => {
+  const [activeModal, setActiveModal] = useState<'privacy' | 'offer' | null>(null);
+
   return (
     <MotionFooter 
       className="bg-graphite pt-16 pb-8 border-t border-white/5 text-white/40 text-sm font-light"
@@ -39,8 +45,8 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2">
               <li>IP Zhigiliy A.P.</li>
               <li>INN 782064027467</li>
-              <li><a href="#" className="hover:text-gold transition-colors">Instagram</a></li>
-              <li><a href="#" className="hover:text-gold transition-colors">Telegram</a></li>
+              <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">Instagram</a></li>
+              <li><a href="https://t.me" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">Telegram</a></li>
             </ul>
           </div>
         </div>
@@ -48,11 +54,35 @@ export const Footer: React.FC = () => {
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p>&copy; {new Date().getFullYear()} Александр Жигилий. Все права защищены.</p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition-colors">Политика конфиденциальности</a>
-            <a href="#" className="hover:text-white transition-colors">Оферта</a>
+            <button 
+              onClick={() => setActiveModal('privacy')}
+              className="hover:text-white transition-colors text-left"
+            >
+              Политика конфиденциальности
+            </button>
+            <button 
+              onClick={() => setActiveModal('offer')}
+              className="hover:text-white transition-colors text-left"
+            >
+              Оферта
+            </button>
           </div>
         </div>
       </div>
+
+      <LegalModal 
+        isOpen={activeModal === 'privacy'} 
+        onClose={() => setActiveModal(null)}
+        title="Политика конфиденциальности"
+        content={PRIVACY_POLICY}
+      />
+
+      <LegalModal 
+        isOpen={activeModal === 'offer'} 
+        onClose={() => setActiveModal(null)}
+        title="Публичная оферта"
+        content={OFFER_AGREEMENT}
+      />
     </MotionFooter>
   );
 };

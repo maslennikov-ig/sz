@@ -1,45 +1,28 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 import { Button } from './Button';
 import { PRICING_TIERS } from '../constants';
+import { FadeIn } from './FadeIn';
 
 interface PricingProps {
   onSelectTariff: (tariff: string) => void;
 }
 
-const MotionSection = motion.section as any;
-const MotionDiv = motion.div as any;
-const MotionH2 = motion.h2 as any;
-
 export const Pricing: React.FC<PricingProps> = ({ onSelectTariff }) => {
   return (
-    <MotionSection 
-      id="pricing" 
-      className="py-24 bg-graphite"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-    >
+    <section id="pricing" className="py-24 bg-graphite">
       <div className="max-w-6xl mx-auto px-6">
-        <MotionH2 
-          className="text-3xl md:text-5xl font-serif text-ivory text-center mb-16"
-          variants={{
-            hidden: { opacity: 0, y: -20 },
-            visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-          }}
-        >
-          Тарифы участия
-        </MotionH2>
+        <FadeIn className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-serif text-ivory">
+            Тарифы участия
+          </h2>
+        </FadeIn>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {PRICING_TIERS.map((tier, index) => (
-            <MotionDiv 
+            <FadeIn 
               key={tier.id}
-              variants={{
-                hidden: { opacity: 0, y: 50 },
-                visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: index * 0.2 } }
-              }}
+              delay={index * 0.2}
               className={`relative p-8 md:p-12 transition-all duration-300 ${
                 tier.isVip 
                   ? 'bg-deepBlack border border-gold/30 shadow-[0_0_50px_rgba(197,160,89,0.1)]' 
@@ -73,10 +56,10 @@ export const Pricing: React.FC<PricingProps> = ({ onSelectTariff }) => {
               >
                 Выбрать тариф
               </Button>
-            </MotionDiv>
+            </FadeIn>
           ))}
         </div>
       </div>
-    </MotionSection>
+    </section>
   );
 };

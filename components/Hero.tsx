@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { Button } from './Button';
 import { IMAGES } from '../constants';
 
@@ -8,8 +8,8 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
-  // Animation variants for the container to stagger children
-  const containerVariants = {
+  // Animation variants
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: { 
       opacity: 1,
@@ -20,8 +20,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
     }
   };
 
-  // Animation variants for individual items
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: { 
       opacity: 1, 
@@ -30,13 +29,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
     }
   };
 
-  // Cast motion components to any to avoid TypeScript errors with missing props in some environments
-  const MotionDiv = motion.div as any;
-  const MotionH1 = motion.h1 as any;
-  const MotionP = motion.p as any;
-
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden" id="hero">
       {/* Background Image - Static & Full Cover */}
       <div className="absolute inset-0 z-0">
         <div 
@@ -50,34 +44,34 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
         </div>
       </div>
       
-      {/* Texture Noise Overlay - Soft light for subtle grain */}
+      {/* Texture Noise Overlay */}
       <div className="absolute inset-0 bg-noise z-10 pointer-events-none opacity-20 mix-blend-soft-light"></div>
 
       <div className="relative z-20 max-w-7xl mx-auto px-6 w-full grid md:grid-cols-2 gap-12 items-center">
-        <MotionDiv 
+        <motion.div 
           className="space-y-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <MotionDiv variants={itemVariants} className="inline-block border-l-2 border-gold pl-4">
+          <motion.div variants={itemVariants} className="inline-block border-l-2 border-gold pl-4">
             <p className="text-gold/80 text-sm md:text-base tracking-[0.2em] uppercase font-medium">
               Авторская технология вице-президента CLUB 500
             </p>
-          </MotionDiv>
+          </motion.div>
 
-          <MotionH1 variants={itemVariants} className="text-4xl md:text-6xl lg:text-7xl font-serif text-ivory leading-tight drop-shadow-2xl">
+          <motion.h1 variants={itemVariants} className="text-4xl md:text-6xl lg:text-7xl font-serif text-ivory leading-tight drop-shadow-2xl">
             Стратегический <br/>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-white">нетворкинг</span>
-          </MotionH1>
+          </motion.h1>
 
-          <MotionP variants={itemVariants} className="text-xl md:text-2xl text-white/80 font-light font-sans max-w-lg drop-shadow-lg">
+          <motion.p variants={itemVariants} className="text-xl md:text-2xl text-white/80 font-light font-sans max-w-lg drop-shadow-lg">
             Создай окружение равных. <br/>
             <span className="text-white/50 text-base block mt-2">Связи — это актив, который нужно не искать, а строить.</span>
-          </MotionP>
+          </motion.p>
 
-          <MotionDiv variants={itemVariants} className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-4">
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-4">
             <Button onClick={onOpenModal} className="text-lg px-10 py-4 shadow-gold/10">
               Забронировать место
             </Button>
@@ -85,12 +79,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
               <span className="block text-ivory font-medium">25 Октября | 17:00</span>
               <span className="block">Four Seasons Hotel, Moscow</span>
             </div>
-          </MotionDiv>
-        </MotionDiv>
+          </motion.div>
+        </motion.div>
       </div>
       
       {/* Scroll indicator */}
-      <MotionDiv 
+      <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
@@ -98,7 +92,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
       >
         <span className="text-[10px] uppercase tracking-widest text-white/30">Scroll</span>
         <div className="w-[1px] h-12 bg-gradient-to-b from-gold to-transparent"></div>
-      </MotionDiv>
+      </motion.div>
     </section>
   );
 };

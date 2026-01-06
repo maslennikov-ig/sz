@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#DCC386;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#C5A059;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#AA8A4B;stop-opacity:1" />
+    </linearGradient>
+    <filter id="noiseFilter">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0F1115"/>
+  <rect width="1200" height="630" filter="url(#noiseFilter)" opacity="0.05"/>
+  
+  <!-- Content -->
+  <g transform="translate(600, 315)">
+    <!-- Border -->
+    <rect x="-550" y="-265" width="1100" height="530" fill="none" stroke="url(#goldGradient)" stroke-width="2" opacity="0.3"/>
+    
+    <!-- Logo Monogram -->
+    <text x="0" y="-80" 
+          font-family="'Playfair Display', serif" 
+          font-size="120" 
+          font-weight="bold" 
+          fill="url(#goldGradient)" 
+          text-anchor="middle">
+      AZ
+    </text>
+    
+    <!-- Main Title -->
+    <text x="0" y="40" 
+          font-family="'Playfair Display', serif" 
+          font-size="70" 
+          fill="#EAE5D9" 
+          text-anchor="middle">
+      Стратегический Нетворкинг
+    </text>
+    
+    <!-- Subtitle -->
+    <text x="0" y="120" 
+          font-family="'Manrope', sans-serif" 
+          font-size="32" 
+          fill="#DCC386" 
+          text-anchor="middle"
+          letter-spacing="4">
+      АЛЕКСАНДР ЖИГИЛИЙ | CLUB 500
+    </text>
+  </g>
+</svg>

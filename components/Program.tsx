@@ -1,18 +1,12 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { TIMELINE } from '../constants';
 import { TimelineItem } from '../types';
+import { FadeIn } from './FadeIn';
 
-// Cast motion.div to any to avoid TS errors
-const MotionDiv = motion.div as any;
-
-const AnimatedTimelineItem: React.FC<{ item: TimelineItem; index: number }> = ({ item, index }) => {
+const TimelineRow: React.FC<{ item: TimelineItem; index: number }> = ({ item, index }) => {
   return (
-    <MotionDiv 
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-10%" }}
-      transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
+    <FadeIn 
+      delay={index * 0.1}
       className={`relative flex items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
     >
       {/* Time - Desktop */}
@@ -49,7 +43,7 @@ const AnimatedTimelineItem: React.FC<{ item: TimelineItem; index: number }> = ({
           <p className="text-white/50 font-light text-sm">{item.description}</p>
         </div>
       </div>
-    </MotionDiv>
+    </FadeIn>
   );
 };
 
@@ -57,16 +51,10 @@ export const Program: React.FC = () => {
   return (
     <section id="program" className="py-24 bg-deepBlack text-ivory">
       <div className="max-w-4xl mx-auto px-6">
-        <MotionDiv 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <FadeIn className="text-center mb-16">
           <span className="text-gold tracking-widest text-xs uppercase">Таймлайн</span>
           <h2 className="text-3xl md:text-4xl font-serif mt-2">Программа вечера</h2>
-        </MotionDiv>
+        </FadeIn>
 
         <div className="relative">
           {/* Vertical Line */}
@@ -74,7 +62,7 @@ export const Program: React.FC = () => {
 
           <div className="space-y-12">
             {TIMELINE.map((item, index) => (
-              <AnimatedTimelineItem key={index} item={item} index={index} />
+              <TimelineRow key={index} item={item} index={index} />
             ))}
           </div>
         </div>
