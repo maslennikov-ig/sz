@@ -2,6 +2,18 @@
 
 User-facing release notes for all versions.
 
+## v0.4.0
+
+_Released on 2026-01-06_
+
+### ✨ New Features
+
+- **components/SocialProof.tsx**: Add 3 source file(s), update 3 source file(s), +1 more
+
+---
+
+_This release was automatically generated from 1 commits._
+
 ## v0.3.1
 
 _Released on 2026-01-06_
