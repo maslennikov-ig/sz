@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-01-06
+
+### Added
+- **legalText.tsx**: add 3 source file(s), update 9 source file(s), +1 more (7c1905e)
+
 ## [0.1.2] - 2026-01-06
 
 ### Other
