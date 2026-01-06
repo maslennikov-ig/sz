@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-01-06
+
+### Added
+- **components/Testimonials.tsx**: add 7 source file(s), update 2 source file(s), +1 more (b50a817)
+
 ## [0.4.0] - 2026-01-06
 
 ### Added
